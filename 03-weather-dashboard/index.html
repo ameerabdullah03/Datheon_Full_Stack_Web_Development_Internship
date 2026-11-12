@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f0f1">
+  <meta name="description" content="Live weather and a five-day forecast for cities around the world.">
+  <title>Skyline — Weather, wherever you are</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="weather-clear">
+  <main class="dashboard">
+    <header class="topbar"><a href="#" class="brand"><span class="brand-icon">◒</span>skyline<span class="brand-dot">.</span></a><div class="top-meta"><span class="live-dot"></span> LIVE WEATHER <span class="meta-divider">/</span><span>OPEN-METEO</span></div></header>
+    <section class="search-section" aria-label="Search weather by city"><p class="eyebrow">A WINDOW TO THE WORLD</p><h1>Weather, wherever<br>you <em>are.</em></h1><p class="subtitle">A little perspective on what's happening outside.</p>
+      <form id="search-form" class="search-form"><span class="search-icon" aria-hidden="true">⌕</span><label class="sr-only" for="city-input">Search city</label><input id="city-input" type="search" placeholder="Search for a city…" autocomplete="off" maxlength="80" required><button type="submit">Find weather <span>↗</span></button></form>
+      <div class="suggestions"><span>TRY</span><button type="button" data-city="Tokyo">Tokyo</button><button type="button" data-city="London">London</button><button type="button" data-city="New York">New York</button><button type="button" data-city="Karachi">Karachi</button></div>
+    </section>
+    <section id="status" class="status" role="status" aria-live="polite" hidden><span class="spinner"></span><span id="status-text">Finding your forecast…</span></section>
+    <section id="error" class="error-card" role="alert" hidden><span class="error-icon">!</span><div><strong id="error-title">Couldn't find that place</strong><p id="error-message">Check the spelling and try another city.</p></div></section>
+    <section id="weather" class="weather-content" aria-label="Current weather and forecast" hidden>
+      <div class="weather-main">
+        <div class="current-card">
+          <div class="current-top"><div><span class="eyebrow">RIGHT NOW</span><h2 id="location-name">—</h2><p id="local-time">—</p></div><div class="weather-icon" id="current-icon" aria-hidden="true">☀</div></div>
+          <div class="temperature-row"><span id="temperature">—</span><span class="degree">°</span><span class="condition" id="condition">—</span></div>
+          <p class="feels-like">Feels like <span id="feels-like">—</span>°</p>
+          <div class="high-low"><span>H <b id="today-high">—</b>°</span><span>L <b id="today-low">—</b>°</span><span class="sunrise-sep">·</span><span id="today-description">—</span></div>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric-card"><span class="metric-icon">◌</span><span class="metric-label">HUMIDITY</span><strong><span id="humidity">—</span><small>%</small></strong><div class="metric-track"><i id="humidity-bar"></i></div><p>Relative humidity</p></article>
+          <article class="metric-card"><span class="metric-icon">↝</span><span class="metric-label">WIND</span><strong><span id="wind">—</span><small>km/h</small></strong><p id="wind-direction">—</p></article>
+          <article class="metric-card"><span class="metric-icon">⌁</span><span class="metric-label">PRESSURE</span><strong><span id="pressure">—</span><small>hPa</small></strong><p>At sea level</p></article>
+          <article class="metric-card"><span class="metric-icon">◉</span><span class="metric-label">CLOUD COVER</span><strong><span id="cloud-cover">—</span><small>%</small></strong><p>Cloudiness</p></article>
+        </div>
+      </div>
+      <section class="forecast-section"><div class="forecast-heading"><div><span class="eyebrow">LOOKING AHEAD</span><h2>Next five days</h2></div><span class="forecast-unit">DAILY OUTLOOK</span></div><div class="forecast-grid" id="forecast-grid"></div></section>
+      <p class="updated-at" id="updated-at"></p>
+    </section>
+    <section id="welcome" class="welcome-card"><div class="welcome-sun">☼</div><h2>Take a look outside.</h2><p>Search any city to see the current conditions and the five-day outlook.</p></section>
+    <footer><span>SKYLINE <b>✳</b> WEATHER FOR THE CURIOUS</span><span>WEATHER DATA BY <a href="https://openweathermap.org/" target="_blank" rel="noreferrer">OPENWEATHER</a></span></footer>
+  </main>
+</body>
+</html>
